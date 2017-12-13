@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import {shuffleLunches} from '../actions/lunchActions';
 
-class Lunches extends Component {
+class Lunches extends Component {   
     render() {
-        console.log("props",this.props);
+        console.log("props",this.props);      
         return (
             <div>
-                 <h1>Lunches</h1>
+                <h1>Lunches</h1>
+                <button onClick={() => this.props.shuffleArray(this.props.lunches)}>shuffle</button>
                 <div className="lunchWrap">
                      
                     {this.props.lunches.map((lunch, index) => {
@@ -29,4 +31,13 @@ function mapStateToProps(state, ownProps) {
     };
 }
 
-export default connect(mapStateToProps)(Lunches);
+function mapDispatchToProps(dispatch, ownProps) {
+    return {
+        shuffleArray: (ownProps) => {
+            console.log('shuffling from dispatch', ownProps);
+            dispatch(shuffleLunches(ownProps));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Lunches);

@@ -1,6 +1,8 @@
 import * as types from './actionTypes';
 import lunchApi from '../api/lunchApi';
 
+
+
 export function loadLunches() {
     return (dispatch) => {
         return lunchApi.getAllLunches().then(lunches => {
@@ -13,5 +15,11 @@ export function loadLunches() {
 
 
 export function loadLunchesSuccess(lunches) {
+    console.log('load lunches success getting called');
     return {type: types.LOAD_LUNCHES_SUCCESS, lunches};
+}
+
+export function shuffleLunches(lunches) {
+    console.log('shuffling in actions', lunches);
+    return {type: types.SHUFFLE_LUNCHES, lunches};
 }
