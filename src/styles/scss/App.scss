@@ -20,6 +20,12 @@ button{
     background: lighten(blue, 20%);
   }
 }
+
+.addLunchForm{
+  display: flex;
+  justify-content: center;
+  padding-bottom:20px;
+}
 .lunch{  
   width:200px;
   min-height:100px;

@@ -28,7 +28,8 @@ export default function lunchReducer(state = initialState.lunches, action) {
             return [
                 ...state,
                 {
-                    name: action.value,
+                    name: action.value1,
+                    rating: action.value2,
                     meals: []
                 }
             ]
