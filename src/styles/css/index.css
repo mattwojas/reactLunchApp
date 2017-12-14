@@ -9,13 +9,34 @@ body {
 
 .lunchWrap {
   display: flex;
-  flex-direction: row; }
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap; }
+
+button {
+  border: 1px solid #000;
+  background: blue;
+  color: #fff;
+  padding: 5px 10px; }
+  button:hover {
+    cursor: pointer;
+    background: #6666ff; }
 
 .lunch {
   width: 200px;
-  height: 100px;
+  min-height: 100px;
   border: 1px solid #000;
-  padding: 10px; }
+  padding: 20px 30px 10px 10px;
+  position: relative;
+  margin-bottom: 20px;
+  transition: all .25s ease-in-out 0s; }
+  .lunch .delLunch {
+    position: absolute;
+    top: 5px;
+    right: 5px; }
+
+.App {
+  display: block; }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
