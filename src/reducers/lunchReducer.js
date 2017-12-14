@@ -24,6 +24,14 @@ export default function lunchReducer(state = initialState.lunches, action) {
                 return i !== action.index;
             });
             return newState;
+        case types.ADD_LUNCH:
+            return [
+                ...state,
+                {
+                    name: action.value,
+                    meals: []
+                }
+            ]
         default:
             return state;
     }    

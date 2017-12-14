@@ -16,7 +16,8 @@ class Lunches extends Component {
                         <div className="lunch" key={index}>
                             <button className="delLunch" onClick={() => this.props.deleteLunch(index)}>X</button>
                             <div className="title">{lunch.name} - {index}</div>
-                            <div className="subTitle">food place with a {lunch.rating} rating</div>
+
+                            {lunch.rating ?  <div className="subTitle">food place with a {lunch.rating} rating</div> : '' }
                             
                             {lunch.meals.length > 0 ? lunch.meals.map((meal, index) => {
                                 return ('meals: ' + meal.name)   

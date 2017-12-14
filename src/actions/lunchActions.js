@@ -26,3 +26,8 @@ export function deleteItem( index) {
     // console.log('lunches to del', lunches);
     return {type: types.DELETE_LUNCH, index}
 }
+
+export function addItem(value){
+    console.log('adding', value);
+    return {type: types.ADD_LUNCH, value};
+}
