@@ -7,6 +7,24 @@ body {
   padding: 20px;
   border: 1px solid #000; }
 
+.showHideToggle .show {
+  display: block;
+  opacity: 1;
+  transition: all .25s ease-in-out 0s; }
+  .showHideToggle .show:hover, .showHideToggle .show.showOpen {
+    color: blue;
+    cursor: pointer; }
+  .showHideToggle .show.showOpen {
+    text-decoration: underline; }
+.showHideToggle .hidden {
+  transition: all .25s ease-in-out 0s;
+  height: 0%;
+  opacity: 0; }
+  .showHideToggle .hidden.showHidden {
+    height: 100%;
+    display: block;
+    opacity: 1; }
+
 .lunchWrap {
   display: flex;
   flex-direction: row;
@@ -25,7 +43,7 @@ button {
 .addLunchForm {
   display: flex;
   justify-content: center;
-  padding-bottom: 20px; }
+  padding: 20px 0; }
 
 .lunch {
   width: 200px;

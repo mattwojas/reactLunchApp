@@ -31,3 +31,8 @@ export function addItem(value1, value2){
     console.log('adding', value1, value2);
     return {type: types.ADD_LUNCH, value1, value2};
 }
+
+export function addMealItem(index, value){
+    console.log('adding meal');
+    return {type:types.ADD_MEAL, index, value};
+}

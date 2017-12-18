@@ -4,6 +4,33 @@
   border:1px solid #000;  
 }
 
+.showHideToggle{
+  
+  .show{
+    display:block;
+    opacity:1;
+    transition: all .25s ease-in-out 0s;
+    &:hover, &.showOpen{
+      color:blue;
+      cursor:pointer;
+    }
+    &.showOpen{
+      text-decoration: underline;
+    }
+  }
+  .hidden{
+    transition: all .25s ease-in-out 0s;
+    // display: none;
+    height:0%;    
+    opacity:0;
+    &.showHidden{
+      height:100%;      
+      display: block;
+      opacity: 1;
+    }
+  }
+}
+
 .lunchWrap{
   display: flex;
   flex-direction: row;
@@ -24,7 +51,7 @@ button{
 .addLunchForm{
   display: flex;
   justify-content: center;
-  padding-bottom:20px;
+  padding:20px 0;
 }
 .lunch{  
   width:200px;
