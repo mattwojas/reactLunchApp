@@ -36,3 +36,9 @@ export function addMealItem(index, value){
     console.log('adding meal');
     return {type:types.ADD_MEAL, index, value};
 }
+
+export function deleteMealItem(parentIndex, index){
+    console.log('parentIndex', parentIndex);
+    console.log('Index', index);
+    return {type: types.DELETE_MEAL, parentIndex, index}
+}

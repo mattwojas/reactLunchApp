@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 //class AddItemForm extends Component {
 let AddMealItemForm = ({ dispatch, itemNum }) => {    
     let mealName;    
-    console.log('show me the props', itemNum);
     return (
        <div className="addMealForm">
             <form onSubmit={e => {

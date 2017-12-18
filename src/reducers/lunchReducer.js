@@ -35,15 +35,18 @@ export default function lunchReducer(state = initialState.lunches, action) {
             ]
         case types.ADD_MEAL:
             // destructure the array
-            const firstState = state.slice(0, action.index);
-            const modState = state[action.index];
+            const headState = state.slice(0, action.index);
+            const modItem = state[action.index];
             const tailState = state.slice(action.index + 1);
             // modify item in quesiton 
-            modState.meals.push({"name": action.value});           
+            modItem.meals.push({"name": action.value});           
             // assemble complete data
-            const finalArray = firstState.concat(modState, tailState)
+            const finalArray = headState.concat(modItem, tailState)
             //return state;
             return finalArray;
+        case types.DELETE_MEAL:
+            console.log('pIndex',action.parentIndex);
+            console.log('indx',action.index);            
         default:
             return state;
     }    

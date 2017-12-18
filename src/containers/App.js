@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {MainNav} from '../components/MainNav';
+// import {MainNav} from '../components/MainNav';
 import AddItemForm from '../components/addLunch';
 import Lunches from '../components/lunches';
 

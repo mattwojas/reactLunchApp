@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import {shuffleLunches, deleteItem, addMealItem} from '../actions/lunchActions';
+import {
+    shuffleLunches, 
+    deleteItem, 
+    addMealItem, 
+    deleteMealItem
+} from '../actions/lunchActions';
 import AddMealItemForm from '../components/addMeal';
 
 class Lunches extends Component {   
@@ -19,27 +24,33 @@ class Lunches extends Component {
                 <button onClick={() => this.props.shuffleArray(this.props.lunches)}>shuffle</button>
                 <br/><br/>
                 <div className="lunchWrap">           
-                    {this.props.lunches.map((lunch, index) => {
+                    {this.props.lunches.map((lunch, lunchIndex) => {
                     return (
-                        <div className="lunch" key={index}>
-                            <button className="delLunch" onClick={() => this.props.deleteLunch(index)}>X</button>
-                            <div className="title"><h2>{lunch.name} - {index}</h2></div>
+                        <div className="lunch" key={lunchIndex}>
+                            <button className="delLunch" onClick={() => this.props.deleteLunch(lunchIndex)}>X</button>
+                            <div className="title"><h2>{lunch.name} - {lunchIndex}</h2></div>
 
                             {lunch.rating ?  <div className="subTitle">food place with a {lunch.rating} rating</div> : '' }
                             
-                            {lunch.meals.length > 0 ? lunch.meals.map((meal, index) => {
+                            {lunch.meals.length > 0 ? lunch.meals.map((meal, mealIndex) => {
                                 return (
-                                    <div key={index} className="mealItem">
-                                        <h3>{meal.name}</h3>
-                                        </div>
+                                    <div key={mealIndex} className="mealItem">
+                                        <h3>#{mealIndex} - {meal.name} - from {lunchIndex}</h3>
+                                        <button 
+                                            className="delMealBtn" 
+                                            onClick={() => this.props.deleteMeal(lunchIndex, mealIndex)}
+                                            >
+                                            X
+                                        </button>
+                                    </div>
                                     )   
                                 }) : ''
                             }                                
                             <div className="showHideToggle">
-                                <div className={`show show_${index}`} onClick={(e) => showIt(e, index)}>Add Meal</div>
-                                <div className={`hidden hidden_${index}`}>
+                                <div className={`show show_${lunchIndex}`} onClick={(e) => showIt(e, lunchIndex)}>Add Meal</div>
+                                <div className={`hidden hidden_${lunchIndex}`}>
                                     Meal Adder
-                                    <AddMealItemForm itemNum={index}/>
+                                    <AddMealItemForm itemNum={lunchIndex}/>
                                 </div>
                             </div>
                         </div>
@@ -67,6 +78,10 @@ function mapDispatchToProps(dispatch, ownProps) {
         },
         addMeal:(ownProps, index) => {
             dispatch(addMealItem(ownProps, index))
+        },
+        deleteMeal:(lunchIndex, mealIndex) => {
+            console.log('from comp', lunchIndex, mealIndex)
+            dispatch(deleteMealItem(lunchIndex, mealIndex));
         }
     }
 }
