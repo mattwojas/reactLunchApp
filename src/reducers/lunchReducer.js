@@ -44,9 +44,17 @@ export default function lunchReducer(state = initialState.lunches, action) {
             const finalArray = headState.concat(modItem, tailState)
             //return state;
             return finalArray;
-        case types.DELETE_MEAL:
-            console.log('pIndex',action.parentIndex);
-            console.log('indx',action.index);            
+        case types.DELETE_MEAL:            
+             // destructure the array
+             const headMealState = state.slice(0, action.parentIndex);
+             const modMealItem = state[action.parentIndex];
+             const tailMealState = state.slice(action.parentIndex + 1);  
+
+             modMealItem.meals.splice(action.index, 1);
+
+             const finalMealArray = headMealState.concat(modMealItem, tailMealState)
+
+             return finalMealArray;
         default:
             return state;
     }    
